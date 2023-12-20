@@ -69,8 +69,14 @@ def mode_selector(finger,cx,cy,screenWidth,screenHeight,lmlist,image):
 
 
 
-    if  finger[1] == 1 and finger[2] == 0 and finger[3] == 0 and finger[4] == 0 :
-        pyautogui.click()
+    if  finger[1] == 1 and finger[2] == 0 and finger[3] == 0 and finger[4] == 0 :    #single click#
+        pyautogui.click(clicks=1, interval=1)
+
+    if  finger[1] == 1 and finger[2] == 0 and finger[3] == 0 and finger[4] == 1 :       #Ignore this line as comment and use lines 90 and 90 if you dont want double click with index and pinky fingers# 
+        pyautogui.click(button= 'left', clicks=2)                                       ###################################### d o u b l e   c l i c k #################################################
+
+    if  finger[1] == 0 and finger[2] == 0 and finger[3] == 0 and finger[4] == 1 :    #right click (pinky finger)#
+        pyautogui.click(button= 'right', clicks=1, interval=1)
 
 
 
@@ -81,10 +87,10 @@ def mode_selector(finger,cx,cy,screenWidth,screenHeight,lmlist,image):
             x2,y2=lmlist[12][1],lmlist[12][2]
             length=hypot(x2-x1,y2-y1)
             print("Scroll:",length)
-            if length > 49 :
-                pyautogui.click(clicks=2)
-
-            else :
+#            if length > 49 :                ###################################################################################################################################
+#                pyautogui.click(clicks=2)   #Use this line if you want double click with index and middle finger apart from eatch other and ignore lines 75 and 76 as comments#
+################################################################################################################################################################################
+            else :                                                #### S C R O L L ####
                 direction=int(540-cy/0.001)
                 print(direction)
                 pyautogui.scroll(direction,cx,cy)
